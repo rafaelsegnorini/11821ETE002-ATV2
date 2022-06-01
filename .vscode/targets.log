@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue May 31 21:22:05 2022
+# Make data base, printed on Tue May 31 22:06:25 2022
 
 # Variables
 
@@ -36,16 +34,20 @@ SHELL = /bin/sh
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
 _ = /home/rafaelsegnorini/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/node
-# makefile (from 'Makefile', line 2)
+# makefile (from 'Makefile', line 5)
 CFLAGS = -c -mcpu=cortex-m4 -mthumb
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
+# makefile (from 'Makefile', line 4)
+CP = arm-none-eabi-objcopy
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
 XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
 # environment
 VSCODE_VERBOSE_LOGGING = true
+# makefile (from 'Makefile', line 8)
+OBJS = startup.o main.o
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -54,6 +56,10 @@ VSCODE_CWD = /mnt/c/Users/User/AppData/Local/Programs/Microsoft VS Code
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
 PATH = /home/rafaelsegnorini/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/users/user/downloads/quartus/bin:/mnt/c/Program Files/usbipd-win/:/mnt/c/Users/User/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/User/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin
+# makefile (from 'Makefile', line 3)
+LD = arm-none-eabi-gcc
+# makefile (from 'Makefile', line 1)
+PROG = blinky
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -94,18 +100,20 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 SHLVL = 0
-# makefile (from 'Makefile', line 1)
+# makefile (from 'Makefile', line 2)
 CC = arm-none-eabi-gcc
 # default
 MAKE_VERSION := 4.2.1
 # environment
 USER = rafaelsegnorini
 # makefile
-.DEFAULT_GOAL := main.o
+.DEFAULT_GOAL := all
 # environment
 NAME = DESKTOP-B1E2TF8
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
+# makefile (from 'Makefile', line 6)
+LFLAGS = -nostdlib -T stm32f411-rom.ld
 # environment
 VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/User/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
 # default
@@ -153,7 +161,7 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 # environment
 MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=70/1024=7%, Rehash=0, Collisions=4/95=4%
+# Load=75/1024=7%, Rehash=0, Collisions=6/108=6%
 
 # Pattern-specific Variable Values
 
@@ -167,27 +175,61 @@ MOTD_SHOWN = update-motd
 
 # Implicit Rules
 
-# No implicit rules.
+%.o: %.c
+#  recipe to execute (from 'Makefile', line 18):
+	$(CC) $(CFLAGS) $< -o $@ 
+
+# 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
 
-# Not a target:
-all:
+startup.o: startup.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'startup'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := startup.o
+# automatic
+# % := 
+# automatic
+# * := startup
+# automatic
+# + := startup.c
+# automatic
+# | := 
+# automatic
+# < := startup.c
+# automatic
+# ^ := startup.c
+# automatic
+# ? := startup.c
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/15=7%
+#  recipe to execute (from 'Makefile', line 18):
+	$(CC) $(CFLAGS) $< -o $@ 
+
+all: blinky.elf
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
-#  File has not been updated.
-
-# Not a target:
-main.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-31 21:21:52.0414085
+#  Last modified 2022-05-31 22:05:29.7314085
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+startup.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-31 21:52:36.7014085
 #  File has been updated.
 #  Successfully updated.
 
@@ -201,30 +243,40 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 6):
-	rm -f *.o
+#  recipe to execute (from 'Makefile', line 20):
+	rm -f $(OBJS) $(PROG).elf
 
-main.o: main.c
+blinky.elf: startup.o main.o
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+#  recipe to execute (from 'Makefile', line 14):
+	$(LD) $(LFLAGS) $^ -o $@
+	$(CP) $(PROG).elf -O binary $(PROG).bin
+
+# Not a target:
+main.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 4):
-	$(CC) $(CFLAGS) $< -o $@
 
 # files hash-table stats:
-# Load=7/1024=1%, Rehash=0, Collisions=0/18=0%
+# Load=9/1024=1%, Rehash=0, Collisions=0/27=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 14 / storage = 112 B / avg = 8 B
-# current buf: size = 8162 B / used = 112 B / count = 14 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 20 / storage = 166 B / avg = 8 B
+# current buf: size = 8162 B / used = 166 B / count = 20 / avg = 8 B
 
-# strcache performance: lookups = 22 / hit rate = 36%
+# strcache performance: lookups = 31 / hit rate = 35%
 # hash-table stats:
-# Load=14/8192=0%, Rehash=0, Collisions=1/22=5%
-# Finished Make data base on Tue May 31 21:22:05 2022
+# Load=20/8192=0%, Rehash=0, Collisions=1/31=3%
+# Finished Make data base on Tue May 31 22:06:25 2022
 
  
