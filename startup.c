@@ -84,24 +84,94 @@ extern uint32_t _la_data; /* Endereco de carga na RAM da secao .data */
 extern uint32_t _sbss; /* Inicio da secao .bss */
 extern uint32_t _ebss; /* Fim da secao .bss */
 
-uint32_t vectors[] __attribute__((section(".isr_vectors"))) =
+uint32_t vectors[]  _attribute_((section(".isr_vectors"))) =
 {
-STACK_START,             /* 0x0000 0000 */
-(uint32_t)reset_handler,    /* 0x0000 0004 */
-(uint32_t)nmi_handler,       /* 0x0000 0008 */
-(uint32_t)default_handler, /* 0x0000 000c */
-(uint32_t)default_handler, /* 0x0000 0010 */
-(uint32_t)default_handler, /* 0x0000 0014 */
-(uint32_t)default_handler, /* 0x0000 0018 */
-0,                          /* 0x0000 001c */
-0,          /* 0x0000 0020 */
+STACK_START, /* 0x0000 0000 */
+(uint32_t)reset_handler, /* 0x0000 0004 */
+(uint32_t)nmi_handler, /* 0x0000 0008 */
+(uint32_t)hardfault_handler, /* 0x0000 000c */
+(uint32_t)memmanage_handler, /* 0x0000 0010 */
+(uint32_t)busfault_handler, /* 0x0000 0014 */
+(uint32_t)usagefault_handler, /* 0x0000 0018 */
+0, /* 0x0000 001c */
+0, /* 0x0000 0020 */
 0, /* 0x0000 0024 */
 0, /* 0x0000 0028 */
-(uint32_t)default_handler, /* 0x0000 002c */
-(uint32_t)default_handler, /* 0x0000 0030 */
+(uint32_t)svc_handler, /* 0x0000 002c */
+(uint32_t)debugmon_handler, /* 0x0000 0030 */
 0, /* 0x0000 0034 */
-(uint32_t)default_handler, /* 0x0000 0038 */
-(uint32_t)default_handler, /* 0x0000 003c */
+(uint32_t)pendsv_handler, /* 0x0000 0038 */
+(uint32_t)systick_handler, /* 0x0000 003c */
+(uint32_t)WWDG_handler,   /*0x0000 0040 */
+(uint32_t)EXTI16_handler,
+(uint32_t)EXTI21_handler,
+(uint32_t)EXTI22_handler,
+(uint32_t)FLASH_handler,
+(uint32_t)RCC_handler,
+(uint32_t)EXTI0_handler,
+(uint32_t)EXTI1_handler,
+(uint32_t)EXTI2_handler,
+(uint32_t)EXTI3_handler,
+(uint32_t)EXTI4_handler,
+(uint32_t)DMA1_Stream0_handler,
+(uint32_t)DMA1_Stream1_handler,
+(uint32_t)DMA1_Stream2_handler,
+(uint32_t)DMA1_Stream3_handler,
+(uint32_t)DMA1_Stream4_handler,
+(uint32_t)DMA1_Stream5_handler,
+(uint32_t)DMA1_Stream6_handler,
+(uint32_t)ADC_handler,
+0,
+0,
+0,
+0,
+(uint32_t)EXTI9_5_handler,
+(uint32_t)TIM1_BRK_TIM9_handler,
+(uint32_t)TIM1_UP_TIM10_handler,
+(uint32_t)TIM1_TRG_COM_TIM11_handler,
+(uint32_t)TIM1_CC_handler,
+(uint32_t)TIM2_handler,
+(uint32_t)TIM3_handler,
+(uint32_t)TIM4_handler,
+(uint32_t)I2C1_EV_handler,
+(uint32_t)I2C1_ER_handler,
+(uint32_t)I2C2_EV_handler,
+(uint32_t)I2C2_ER_handler,
+(uint32_t)SPI1_handler,
+(uint32_t)SPI2_handler,
+(uint32_t)USART1_handler,
+(uint32_t)USART2_handler,
+(uint32_t)EXTI15_10_handler,
+(uint32_t)EXTI17_handler,
+(uint32_t)EXTI18_handler,
+0,
+0,
+0,
+0,
+(uint32_t)DMA1_Stream7_handler,
+0,
+(uint32_t)SDIO_handler,
+(uint32_t)TIM5_handler,
+(uint32_t)SPI3_handler,
+0,
+0,
+0,
+0,
+(uint32_t)DMA2_Stream0_handler,
+(uint32_t)DMA2_Stream1_handler,
+(uint32_t)DMA2_Stream2_handler,
+(uint32_t)DMA2_Stream3_handler,
+(uint32_t)DMA2_Stream4_handler,
+(uint32_t)OTG_FS_handler,
+(uint32_t)DMA2_Stream5_handler,
+(uint32_t)DMA2_Stream6_handler,
+(uint32_t)DMA2_Stream7_handler,
+(uint32_t)USART6_handler,
+(uint32_t)I2C3_EV_handler,
+(uint32_t)I2C3_ER_handler,
+(uint32_t)FPU_handler,
+(uint32_t)SPI4_handler,
+(uint32_t)SPI5_handler,
 };
 
 void reset_handler()
