@@ -3,13 +3,12 @@ make: *** No rule to make target 'all'.  Stop.
 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
- 
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue May 31 18:01:34 2022
+# Make data base, printed on Tue May 31 21:22:05 2022
 
 # Variables
 
@@ -37,6 +36,8 @@ SHELL = /bin/sh
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
 _ = /home/rafaelsegnorini/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/node
+# makefile (from 'Makefile', line 2)
+CFLAGS = -c -mcpu=cortex-m4 -mthumb
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # 'override' directive
@@ -80,7 +81,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 LOGNAME = rafaelsegnorini
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -93,12 +94,14 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 SHLVL = 0
+# makefile (from 'Makefile', line 1)
+CC = arm-none-eabi-gcc
 # default
 MAKE_VERSION := 4.2.1
 # environment
 USER = rafaelsegnorini
 # makefile
-.DEFAULT_GOAL := 
+.DEFAULT_GOAL := main.o
 # environment
 NAME = DESKTOP-B1E2TF8
 # automatic
@@ -150,7 +153,7 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 # environment
 MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=68/1024=7%, Rehash=0, Collisions=4/92=4%
+# Load=70/1024=7%, Rehash=0, Collisions=4/95=4%
 
 # Pattern-specific Variable Values
 
@@ -158,9 +161,9 @@ MOTD_SHOWN = update-motd
 
 # Directories
 
-# . (device 2064, inode 11000): 7 files, no impossibilities.
+# . (device 2064, inode 11000): 8 files, no impossibilities.
 
-# 7 files, no impossibilities in 1 directories.
+# 8 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -176,9 +179,15 @@ all:
 #  File has not been updated.
 
 # Not a target:
+main.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-29 19:29:12.5612698
+#  Last modified 2022-05-31 21:21:52.0414085
 #  File has been updated.
 #  Successfully updated.
 
@@ -188,20 +197,34 @@ Makefile:
 #  Modification time never checked.
 #  File has not been updated.
 
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 6):
+	rm -f *.o
+
+main.o: main.c
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 4):
+	$(CC) $(CFLAGS) $< -o $@
+
 # files hash-table stats:
-# Load=4/1024=0%, Rehash=0, Collisions=0/14=0%
+# Load=7/1024=1%, Rehash=0, Collisions=0/18=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 12 / storage = 96 B / avg = 8 B
-# current buf: size = 8162 B / used = 96 B / count = 12 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 14 / storage = 112 B / avg = 8 B
+# current buf: size = 8162 B / used = 112 B / count = 14 / avg = 8 B
 
-# strcache performance: lookups = 16 / hit rate = 25%
+# strcache performance: lookups = 22 / hit rate = 36%
 # hash-table stats:
-# Load=12/8192=0%, Rehash=0, Collisions=1/16=6%
-# Finished Make data base on Tue May 31 18:01:34 2022
+# Load=14/8192=0%, Rehash=0, Collisions=1/22=5%
+# Finished Make data base on Tue May 31 21:22:05 2022
 
  
