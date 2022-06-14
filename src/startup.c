@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <stdlib.h>
+#include <stdint.h>
 #define SRAM_START 0x20000000U /*Início da memória SRAM*/
 #define SRAM_SIZE  (128U * 1024U) /*Tamanho da SRAM*/
 #define SRAM_END   ((SRAM_START)+ \
